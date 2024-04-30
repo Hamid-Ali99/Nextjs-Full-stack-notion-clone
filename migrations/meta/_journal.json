@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1714461369098,
+      "tag": "0000_ambitious_silver_surfer",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1714466440486,
+      "tag": "0001_youthful_agent_brand",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714468507135,
+      "tag": "0002_smart_sharon_carter",
+      "breakpoints": true
+    }
+  ]
+}
