@@ -10,7 +10,7 @@ import {
 } from "../ui/accordion";
 import clsx from "clsx";
 import EmojiPicker from "../global/emoji-picker";
-import { updateFolder } from "@/lib/supabase/queries";
+import { createFile, updateFile, updateFolder } from "@/lib/supabase/queries";
 import { useToast } from "../ui/use-toast";
 import TooltipComponent from "../global/tooltip-component";
 import { PlusIcon, Trash } from "lucide-react";
@@ -101,21 +101,21 @@ const Dropdown: React.FC<DropdownProps> = ({
       await updateFolder({ title }, fId[0]);
     }
 
-    // if (fId.length === 2 && fId[1]) {
-    //   if (!fileTitle) return;
-    //   const { data, error } = await updateFile({ title: fileTitle }, fId[1]);
-    //   if (error) {
-    //     toast({
-    //       title: 'Error',
-    //       variant: 'destructive',
-    //       description: 'Could not update the title for this file',
-    //     });
-    //   } else
-    //     toast({
-    //       title: 'Success',
-    //       description: 'File title changed.',
-    //     });
-    // }
+    if (fId.length === 2 && fId[1]) {
+      if (!fileTitle) return;
+      const { data, error } = await updateFile({ title: fileTitle }, fId[1]);
+      if (error) {
+        toast({
+          title: "Error",
+          variant: "destructive",
+          description: "Could not update the title for this file",
+        });
+      } else
+        toast({
+          title: "Success",
+          description: "File title changed.",
+        });
+    }
   };
 
   //onchanges
@@ -282,19 +282,19 @@ const Dropdown: React.FC<DropdownProps> = ({
       type: "ADD_FILE",
       payload: { file: newFile, folderId: id, workspaceId },
     });
-    // const { data, error } = await createFile(newFile);
-    // if (error) {
-    //   toast({
-    //     title: 'Error',
-    //     variant: 'destructive',
-    //     description: 'Could not create a file',
-    //   });
-    // } else {
-    //   toast({
-    //     title: 'Success',
-    //     description: 'File created.',
-    //   });
-    // }
+    const { data, error } = await createFile(newFile);
+    if (error) {
+      toast({
+        title: "Error",
+        variant: "destructive",
+        description: "Could not create a file",
+      });
+    } else {
+      toast({
+        title: "Success",
+        description: "File created.",
+      });
+    }
   };
 
   return (
