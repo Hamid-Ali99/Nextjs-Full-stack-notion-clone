@@ -216,22 +216,22 @@ const Dropdown: React.FC<DropdownProps> = ({
           fileId: pathId[1],
         },
       });
-      // const { data, error } = await updateFile(
-      //   { inTrash: `Deleted by ${user?.email}` },
-      //   pathId[1]
-      // );
-      // if (error) {
-      //   toast({
-      //     title: 'Error',
-      //     variant: 'destructive',
-      //     description: 'Could not move the folder to trash',
-      //   });
-      // } else {
-      //   toast({
-      //     title: 'Success',
-      //     description: 'Moved folder to trash',
-      //   });
-      // }
+      const { data, error } = await updateFile(
+        { inTrash: `Deleted by ${user?.email}` },
+        pathId[1]
+      );
+      if (error) {
+        toast({
+          title: "Error",
+          variant: "destructive",
+          description: "Could not move the folder to trash",
+        });
+      } else {
+        toast({
+          title: "Success",
+          description: "Moved folder to trash",
+        });
+      }
     }
   };
 
