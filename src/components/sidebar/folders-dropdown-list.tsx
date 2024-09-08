@@ -56,6 +56,7 @@ const FoldersDropdownList: React.FC<FoldersDropdownListProps> = ({
 
   //add folder
   const addFolderHandler = async () => {
+    // Work In Prograss . Subscription modal
     // if (folders.length >= 3 && !subscription) {
     // }
     const newFolder: Folder = {
